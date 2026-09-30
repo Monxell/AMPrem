@@ -1,81 +1,526 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Aktivasi AM Premium</title>
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- CSS Eksternal -->
-  <link rel="stylesheet" href="style.css">
-  
-  <!-- Axios untuk API -->
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alight Motion VIP Pro Activator</title>
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Axios for API request -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <style>
+        :root {
+            --bg-main: #f4f4f0;
+            --border-color: #000000;
+            --yellow: #facc15;
+            --green: #84cc16;
+            --cyan: #06b6d4;
+            --shadow: 4px 4px 0px #000000;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: #000;
+            padding: 15px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* Top Header Badges */
+        .badge-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .badge {
+            border: 2.5px solid var(--border-color);
+            padding: 6px 12px;
+            font-weight: 800;
+            font-size: 12px;
+            box-shadow: 2px 2px 0px #000;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-yellow { background-color: var(--yellow); }
+        .badge-green { background-color: var(--green); }
+
+        /* Stats Bar */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .stat-box {
+            background: #fff;
+            border: 2.5px solid var(--border-color);
+            padding: 10px 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-label {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #555;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 800;
+            margin-top: 2px;
+        }
+
+        /* Step Indicators */
+        .step-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .step-tab {
+            background: #fff;
+            border: 2.5px solid var(--border-color);
+            padding: 8px 4px;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 800;
+            color: #777;
+            cursor: pointer;
+        }
+
+        .step-tab.active {
+            background: #000;
+            color: #fff;
+            border-bottom: 4px solid var(--yellow);
+        }
+
+        .step-tab span {
+            display: block;
+            font-size: 12px;
+        }
+
+        /* Main Card */
+        .card {
+            background: #fff;
+            border: 3px solid var(--border-color);
+            padding: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 15px;
+        }
+
+        .step-tag {
+            background: var(--green);
+            border: 2px solid #000;
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 10px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        p.desc {
+            font-size: 11px;
+            color: #444;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        label {
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            border: 2.5px solid #000;
+            padding: 10px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            background: #fffde7;
+            outline: none;
+        }
+
+        input:focus {
+            background: #fff;
+        }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            border: 2.5px solid #000;
+            padding: 12px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            transition: transform 0.1s;
+        }
+
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .btn-green { background: var(--green); }
+        .btn-cyan { background: var(--cyan); }
+        .btn-yellow { background: var(--yellow); }
+
+        /* Email Info Box in Step 2 */
+        .email-info-box {
+            border: 2px solid #000;
+            background: #f8fafc;
+            padding: 10px;
+            margin-bottom: 12px;
+            font-size: 12px;
+        }
+
+        .email-info-box span {
+            font-weight: 800;
+            color: #000;
+        }
+
+        /* Terminal Logs */
+        .terminal {
+            background: #111;
+            color: #00ff66;
+            border: 3px solid #000;
+            padding: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            box-shadow: var(--shadow);
+            border-radius: 4px;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #333;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+            color: #aaa;
+        }
+
+        .dots { display: flex; gap: 4px; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .log-content {
+            height: 80px;
+            overflow-y: auto;
+            line-height: 1.5;
+        }
+
+        .log-item { margin-bottom: 4px; }
+        .log-err { color: #ff4d4d; }
+        .log-succ { color: #00ff66; }
+
+        .hidden { display: none; }
+    </style>
 </head>
 <body>
 
-  <div class="app-container">
-    <header class="app-header">
-      <h1>Aktivasi Premium</h1>
-      <p>Upgrade akun Alight Motion Anda secara instan</p>
-    </header>
+    <!-- Top Badges -->
+    <div class="badge-container">
+        <div class="badge badge-yellow"><i class="fa-solid fa-bolt"></i> Auto 1-Year VIP Pro</div>
+        <div class="badge badge-green"><i class="fa-solid fa-gears"></i> AM-Reverse Engine</div>
+    </div>
 
-    <main class="content-area">
-      <!-- Kartu Form API -->
-      <section class="card glass-panel">
-        <h2 class="section-title"><i class="fa-solid fa-bolt"></i> Form Aktivasi</h2>
-        <form id="activationForm">
-          <div class="input-group">
-            <label for="email">Email Akun AM</label>
-            <input type="email" id="email" placeholder="contoh@gmail.com" required>
-            <!-- Tombol Kirim Link Login -->
-            <button type="button" id="sendLinkBtn" class="secondary-btn">
-              <i class="fa-solid fa-paper-plane"></i> Kirim Link Login Email
+    <!-- Stats -->
+    <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-label">Total Aktivasi</div>
+            <div class="stat-value">143</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Aktivasi Hari Ini</div>
+            <div class="stat-value">19</div>
+        </div>
+    </div>
+
+    <!-- Navigation Steps -->
+    <div class="step-nav">
+        <div class="step-tab active" id="tab1" onclick="switchStep(1)">
+            LANGKAH 1
+            <span>01 Email</span>
+        </div>
+        <div class="step-tab" id="tab2" onclick="switchStep(2)">
+            LANGKAH 2
+            <span>02 Link</span>
+        </div>
+        <div class="step-tab" id="tab3" onclick="switchStep(3)">
+            LANGKAH 3
+            <span>03 VIP Pro</span>
+        </div>
+    </div>
+
+    <!-- STEP 1 CONTAINER -->
+    <div id="step1-card" class="card">
+        <div class="step-tag">STEP 01</div>
+        <h2>Masukkan Email Akun Alight Motion</h2>
+        <p class="desc">Link verifikasi instan akan dikirim langsung ke alamat email Anda tanpa perlu kata sandi.</p>
+
+        <label>Alamat Email Target *</label>
+        <div class="input-group">
+            <input type="email" id="emailInput" placeholder="contoh: nama@gmail.com">
+        </div>
+
+        <button class="btn btn-green" onclick="sendMagicLink()">
+            <i class="fa-solid fa-paper-plane"></i> Kirim Magic Link Ke Email &rarr;
+        </button>
+
+        <button class="btn btn-cyan" onclick="goToStep2Directly()">
+            <i class="fa-solid fa-paste"></i> Langsung Tempel Link &rarr;
+        </button>
+    </div>
+
+    <!-- STEP 2 CONTAINER -->
+    <div id="step2-card" class="card hidden">
+        <div class="step-tag" style="background: var(--cyan);">STEP 02</div>
+        <h2>Tempel Link & Aktifkan VIP Pro</h2>
+        <p class="desc">Buka email masuk dari Alight Motion di email Anda, salin link lalu tempel di bawah.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;">
+            <a href="https://mail.google.com" target="_blank" style="text-decoration: none;">
+                <button class="btn btn-yellow" style="margin: 0; font-size: 10px;">
+                    <i class="fa-solid fa-envelope"></i> Buka Gmail
+                </button>
+            </a>
+            <button class="btn btn-yellow" style="margin: 0; font-size: 10px;" onclick="pasteFromClipboard()">
+                <i class="fa-solid fa-clipboard"></i> Tempel Clip
             </button>
-          </div>
-          <div class="input-group">
-            <label for="link">Tautan Login</label>
-            <input type="url" id="link" placeholder="Tempel tautan dari email..." required>
-          </div>
-          <button type="submit" id="submitBtn" class="primary-btn">
-            Aktivasi Sekarang
-          </button>
-          <div id="statusNotif" class="status-message"></div>
-        </form>
-      </section>
+        </div>
 
-      <!-- Kartu Panduan -->
-      <section class="guide-section">
-        <div class="card glass-panel guide-step">
-          <span class="step-number">01</span>
-          <h3>MASUKKAN EMAIL</h3>
-          <p>Gunakan alamat email yang sama dengan akun Alight Motion Anda.</p>
+        <div class="email-info-box">
+            Email Target: <span id="displayTargetEmail">Belum diisi</span> 
+            <a href="#" onclick="switchStep(1)" style="color: #0284c7; font-weight: 700; margin-left: 8px;">Ganti Email</a>
         </div>
-        
-        <div class="card glass-panel guide-step">
-          <span class="step-number">02</span>
-          <h3>PERIKSA INBOX</h3>
-          <p>Cari email dari Alight Creative, periksa folder Spam jika perlu.</p>
-        </div>
-        
-        <div class="card glass-panel guide-step">
-          <span class="step-number">03</span>
-          <h3>SALIN LINK</h3>
-          <p>Tahan teks "Login to Alight Creative", lalu salin tautannya.</p>
-        </div>
-        
-        <div class="card glass-panel guide-step">
-          <span class="step-number">04</span>
-          <h3>TEMPEL & SELESAI</h3>
-          <p>Tempelkan link di halaman aktivasi. Premium aktif otomatis.</p>
-        </div>
-      </section>
-    </main>
-  </div>
 
-  <!-- JavaScript Eksternal -->
-  <script src="script.js"></script>
+        <label>Tautan Magic Link / Kode oobCode *</label>
+        <div class="input-group">
+            <input type="text" id="linkInput" placeholder="https://alight-creative.firebaseapp.com/...">
+        </div>
+
+        <button class="btn btn-cyan" id="btnVerify" onclick="verifyAndActivate()">
+            <i class="fa-solid fa-circle-check"></i> Verifikasi & Aktifkan Premium
+        </button>
+    </div>
+
+    <!-- STEP 3 CONTAINER (SUCCESS) -->
+    <div id="step3-card" class="card hidden" style="text-align: center;">
+        <div class="step-tag" style="background: var(--yellow);">STEP 03</div>
+        <h2 style="color: var(--green); font-size: 20px;">AKTIVASI BERHASIL!</h2>
+        <p class="desc">Akun Alight Motion Anda telah ditingkatkan ke VIP Pro selama 1 Tahun.</p>
+        <i class="fa-solid fa-circle-check" style="font-size: 60px; color: var(--green); margin: 15px 0;"></i>
+        <button class="btn btn-green" onclick="location.reload()">Selesai / Ulangi</button>
+    </div>
+
+    <!-- Terminal Output -->
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="dots">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+            </div>
+            <div>&gt;_ amv2_terminal.log</div>
+        </div>
+        <div class="log-content" id="terminalLogs">
+            <div class="log-item">[SYSTEM] Sistem Verifikasi Alight Motion siap.</div>
+            <div class="log-item">[READY] Masukkan email akun Alight Motion Anda.</div>
+        </div>
+    </div>
+
+    <script>
+        // Store State global & Sync dengan LocalStorage
+        let currentEmail = localStorage.getItem('am_target_email') || '';
+
+        // Inisialisasi saat web pertama dimuat
+        window.onload = function() {
+            if (currentEmail) {
+                document.getElementById('emailInput').value = currentEmail;
+                document.getElementById('displayTargetEmail').textContent = currentEmail;
+            }
+        };
+
+        // Fungsi Tambah Log ke Terminal
+        function log(msg, type = 'normal') {
+            const container = document.getElementById('terminalLogs');
+            const item = document.createElement('div');
+            item.className = 'log-item ' + (type === 'err' ? 'log-err' : type === 'succ' ? 'log-succ' : '');
+            item.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            container.appendChild(item);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // Perpindahan Tab Step
+        function switchStep(step) {
+            document.querySelectorAll('.step-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+
+            document.getElementById(`tab${step}`).classList.add('active');
+            document.getElementById(`step${step}-card`).classList.remove('hidden');
+        }
+
+        // Simpan Email & Pindah ke Step 2
+        function saveEmail() {
+            const inputVal = document.getElementById('emailInput').value.trim();
+            if (!inputVal || !inputVal.includes('@')) {
+                alert('Masukkan alamat email yang valid!');
+                log('Error: Format email tidak valid.', 'err');
+                return false;
+            }
+            currentEmail = inputVal;
+            localStorage.setItem('am_target_email', currentEmail);
+            document.getElementById('displayTargetEmail').textContent = currentEmail;
+            return true;
+        }
+
+        function goToStep2Directly() {
+            if (saveEmail()) {
+                log(`Email target diset ke: ${currentEmail}`);
+                switchStep(2);
+            }
+        }
+
+        // 1. Tombol Kirim Magic Link (Step 1)
+        async function sendMagicLink() {
+            if (!saveEmail()) return;
+
+            log(`Mengirim request Magic Link ke email ${currentEmail}...`);
+
+            try {
+                // Panggil API pengiriman link
+                const res = await axios.post('https://alight.quietxhub.my.id/api/send', {
+                    email: currentEmail
+                });
+                log(`Success: ${res.data.message || 'Link berhasil dikirim! Periksa folder Spam.'}`, 'succ');
+                switchStep(2);
+            } catch (err) {
+                log(`Peringatan: ${err.response?.data?.message || 'Gagal mengirim otomatis, silakan periksa email Anda manual.'}`, 'err');
+                // Tetap pindahtangankan ke Step 2
+                switchStep(2);
+            }
+        }
+
+        // Auto Extractor oobCode dari Link Firebase Panjang
+        function extractOobCode(urlOrCode) {
+            try {
+                const parsedUrl = new URL(urlOrCode);
+                
+                // Jika url dibungkus parameter link=https://...
+                const nestedLink = parsedUrl.searchParams.get('link');
+                if (nestedLink) {
+                    const innerUrl = new URL(nestedLink);
+                    if (innerUrl.searchParams.has('oobCode')) {
+                        return innerUrl.searchParams.get('oobCode');
+                    }
+                }
+
+                // Jika oobCode langsung di URL utama
+                if (parsedUrl.searchParams.has('oobCode')) {
+                    return parsedUrl.searchParams.get('oobCode');
+                }
+            } catch (e) {
+                // Regex fallback jika URL terpotong
+                const match = urlOrCode.match(/oobCode=([^&]+)/);
+                if (match) return decodeURIComponent(match[1]);
+            }
+            return urlOrCode; // Jika sudah berupa string kode murni
+        }
+
+        // Paste dari Clipboard
+        async function pasteFromClipboard() {
+            try {
+                const text = await navigator.clipboard.readText();
+                document.getElementById('linkInput').value = text;
+                log('Tautan berhasil ditempel dari clipboard.');
+            } catch (err) {
+                alert('Gagal membaca clipboard. Izinkan akses clipboard atau tempel manual.');
+            }
+        }
+
+        // 2. Tombol Verifikasi & Aktifkan (Step 2)
+        async function verifyAndActivate() {
+            const rawInput = document.getElementById('linkInput').value.trim();
+
+            if (!currentEmail || currentEmail === 'Belum diisi') {
+                alert('Email target tidak ditemukan. Kembali ke Step 1.');
+                switchStep(1);
+                return;
+            }
+
+            if (!rawInput) {
+                alert('Tempelkan link atau kode oobCode terlebih dahulu!');
+                log('Error: Input link kosong.', 'err');
+                return;
+            }
+
+            // Ambil oobCode murni
+            const cleanCode = extractOobCode(rawInput);
+            log(`Mengekstrak oobCode: ${cleanCode.substring(0, 15)}...`);
+            log(`Mengirim proses verifikasi ke API...`);
+
+            const btn = document.getElementById('btnVerify');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memproses Verifikasi...';
+
+            try {
+                const res = await axios.post('https://alight.quietxhub.my.id/api/verify', {
+                    email: currentEmail,
+                    oobCode: cleanCode
+                });
+
+                log(`BERHASIL: ${res.data.message || 'VIP Pro 1 Tahun Aktif!'}`, 'succ');
+                switchStep(3);
+            } catch (err) {
+                const errMsg = err.response?.data?.message || err.message || 'Verifikasi gagal.';
+                log(`Gagal Verifikasi: ${errMsg}`, 'err');
+                alert(`Gagal: ${errMsg}\n\nPastikan link masih baru dan belum pernah digunakan.`);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Verifikasi & Aktifkan Premium';
+            }
+        }
+    </script>
 </body>
 </html>
